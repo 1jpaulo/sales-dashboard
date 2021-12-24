@@ -1,6 +1,6 @@
 require "test_helper"
 
-class DataTablesControllerTest < ActionDispatch::IntegrationTest
+class SalesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
