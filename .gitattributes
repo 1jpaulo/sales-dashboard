@@ -5,3 +5,10 @@ db/schema.rb linguist-generated
 
 # Mark any vendored files as having been vendored.
 vendor/* linguist-vendored
+
+# Enforce Unix newlines
+* text=auto eol=lf
+
+# Ignores for analysis is used to produce the language stats bar which displays the languages percentages
+plugins/* linguist-vendored=true
+docs/* linguist-vendored=true
