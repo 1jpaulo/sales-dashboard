@@ -56,9 +56,11 @@ node_modules/
 bower_components/
 
 # postinstall npm script generated folders
-app/assets/plugins/
-app/assets/dist/css/*
-!app/assets/dist/css/alt
+app/assets/stylesheets/adminlte.css
+app/assets/stylesheets/adminlte.css.map
+app/assets/stylesheets/adminlte.min.css
+app/assets/stylesheets/adminlte.min.css.map
+/vendor/assets/plugins
 
 # Docs
 /docs/_site/

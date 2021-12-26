@@ -1,5 +1,5 @@
 'use strict'
-const path = 'app/assets/';
+const path = 'vendor/assets/';
 const Plugins = [
   // jQuery
   {

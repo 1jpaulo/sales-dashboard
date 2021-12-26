@@ -12,7 +12,7 @@
   <!-- IonIcons -->
   <%= stylesheet_link_tag "https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" %>
   <!-- Theme style -->
-  <%= stylesheet_link_tag "css/adminlte.min.css" %>
+  <%= stylesheet_link_tag "adminlte.min.css" %>
 </head>
 <!--
 `body` tag options:
@@ -237,7 +237,7 @@
                     <tbody>
                     <tr>
                       <td>
-                        <img src="<%= asset_path('img/default-150x150.png') %>" alt="Product 1" class="img-circle img-size-32 mr-2">
+                        <img src="<%= asset_path('default-150x150.png') %>" alt="Product 1" class="img-circle img-size-32 mr-2">
                         Some Product
                       </td>
                       <td>$13 USD</td>
@@ -256,7 +256,7 @@
                     </tr>
                     <tr>
                       <td>
-                        <img src="<%= asset_path('img/default-150x150.png') %>" alt="Product 1" class="img-circle img-size-32 mr-2">
+                        <img src="<%= asset_path('default-150x150.png') %>" alt="Product 1" class="img-circle img-size-32 mr-2">
                         Another Product
                       </td>
                       <td>$29 USD</td>
@@ -275,7 +275,7 @@
                     </tr>
                     <tr>
                       <td>
-                        <img src="<%= asset_path('img/default-150x150.png') %>" alt="Product 1" class="img-circle img-size-32 mr-2">
+                        <img src="<%= asset_path('default-150x150.png') %>" alt="Product 1" class="img-circle img-size-32 mr-2">
                         Amazing Product
                       </td>
                       <td>$1,230 USD</td>
@@ -294,7 +294,7 @@
                     </tr>
                     <tr>
                       <td>
-                        <img src="<%= asset_path('img/default-150x150.png') %>" alt="Product 1" class="img-circle img-size-32 mr-2">
+                        <img src="<%= asset_path('default-150x150.png') %>" alt="Product 1" class="img-circle img-size-32 mr-2">
                         Perfect Item
                         <span class="badge bg-danger">NEW</span>
                       </td>
@@ -347,11 +347,11 @@
 <!-- Bootstrap -->
 <%= javascript_include_tag "bootstrap/js/bootstrap.bundle.min.js" %>
 <!-- AdminLTE -->
-<%= javascript_include_tag "js/adminlte.js" %>
+<%= javascript_include_tag "adminlte.js" %>
 
 <!-- OPTIONAL SCRIPTS -->
 <%= javascript_include_tag "chart.js/Chart.min.js" %>
 
-<%= javascript_include_tag "js/pages/dashboard3.js" %>
+<%= javascript_include_tag "pages/dashboard.js" %>
 </body>
 </html>
