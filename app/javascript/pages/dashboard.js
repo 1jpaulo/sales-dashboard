@@ -11,22 +11,104 @@ $(function () {
   var mode = 'index'
   var intersect = true
 
-  var $salesChart = $('#sales-chart')
-  // eslint-disable-next-line no-unused-vars
-  var salesChart = new Chart($salesChart, {
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+
+  ]
+
+  async function year_sales_monthly(year) {
+
+    return new Promise(function(resolve, reject) {
+
+      $.ajax(`sales/${year}`, {
+        contentType: 'application/json',
+        dataType: 'json'
+      }).done(function (data) {
+        // if profit is retrieved successfully resolve the promise
+        resolve(data);
+      }).fail(function () {
+        // TODO if it does fail gotta do something else
+        reject(0)
+      })
+
+    })
+
+  }
+
+  $("#sales_trigger").on('click', function(){
+    fillSalesChart(2004, 2005)
+  })
+
+  async function fillSalesChart(year_one, year_two) {
+
+    // schedule loading screen for .3 seconds, so if data loads
+    // much fast it won't blink causing a weird effect
+    var loadingSchedule = setTimeout(function () {
+
+        console.log("Adding loading class.");
+        $('.loading_screen').addClass('display_loading')
+
+      },
+      300
+    )
+
+    const year_one_sales = await year_sales_monthly(year_one);
+    const year_two_sales = await year_sales_monthly(year_two);
+
+
+    // empty datasets with previous values
+    salesChart.data.datasets[0].data = []
+    salesChart.data.datasets[1].data = []
+
+    // fill first column with first year
+    Object.keys(year_one_sales).forEach(function(k){
+      salesChart.data.datasets[0].data.push(year_one_sales[k])
+      // console.log("Inserting year one value: " + year_two_sales[k])
+    })
+
+    // fill second column with second year
+    Object.keys(year_two_sales).forEach(function(k){
+      salesChart.data.datasets[1].data.push(year_two_sales[k])
+      // console.log("Inserting year two value: " + year_two_sales[k])
+    })
+
+    // console.log("Year one: ")
+    // console.log(year_one_sales)
+
+    // console.log("Year two: ")
+    // console.log(year_two_sales)
+
+    // bind a year to its respective color in the chart subtitle
+    $("#blue_year").text(year_one)
+    $("#gray_year").text(year_two)
+
+    console.log("Updating sales Chart")
+    salesChart.update()
+
+    if (loadingSchedule) clearTimeout(loadingSchedule)
+    console.log("Clearing loading screen")
+    $('.loading_screen').removeClass('display_loading')
+  }
+
+
+
+  var salesChartObject = {
     type: 'bar',
     data: {
-      labels: ['JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      labels: monthNames,
       datasets: [
+        // blue year
         {
           backgroundColor: '#007bff',
           borderColor: '#007bff',
-          data: [1000, 2000, 3000, 2500, 2700, 2500, 3000]
+          data: []
         },
+        // gray year
         {
           backgroundColor: '#ced4da',
           borderColor: '#ced4da',
-          data: [700, 1700, 2700, 2000, 1800, 1500, 2000]
+          data: []
         }
       ]
     },
@@ -75,7 +157,10 @@ $(function () {
         }]
       }
     }
-  })
+  }
+  var $salesChart = $('#sales-chart')
+  // eslint-disable-next-line no-unused-vars
+  var salesChart = new Chart($salesChart, salesChartObject)
 
   var $visitorsChart = $('#visitors-chart')
   // eslint-disable-next-line no-unused-vars

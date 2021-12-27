@@ -13,6 +13,9 @@
   <%= stylesheet_link_tag "https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" %>
   <!-- Theme style -->
   <%= stylesheet_link_tag "adminlte.min.css" %>
+  <!-- Application style -->
+  <%= stylesheet_link_tag "application.css" %>
+
 </head>
 <!--
 `body` tag options:
@@ -25,6 +28,15 @@
 -->
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
+
+  <div class="wrapper">
+    <!-- Preloader -->
+    <div class="loading_screen flex-column justify-content-center align-items-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -118,11 +130,11 @@
           <!-- LEFT COL - MD-6 -->
           <div class="col-lg-6">
 
-            <!-- ONLINE STORE VISITORS -->
+            <!-- MONTH SALES BY DAY VISITORS -->
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Online Store Visitors</h3>
+                  <h3 class="card-title">Month Sales by Day</h3>
                   <a href="javascript:void(0);">View Report</a>
                 </div>
               </div>
@@ -156,7 +168,7 @@
                 </div>
               </div>
             </div>
-            <!-- END ONLINE STORE VISITORS -->
+            <!-- END MONTH SALES BY DAY VISITORS -->
 
           </div>
           <!-- END LEFT COL - MD-6 -->
@@ -168,7 +180,7 @@
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
                   <h3 class="card-title">Sales</h3>
-                  <a href="javascript:void(0);">View Report</a>
+                  <a href="javascript:void(0);" id="sales_trigger">Year 2005-2006</a>
                 </div>
               </div>
               <div class="card-body">
@@ -192,11 +204,13 @@
 
                 <div class="d-flex flex-row justify-content-end">
                   <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> This year
+                    <i class="fas fa-square text-primary"></i>
+                    <span id="blue_year"></span>
                   </span>
 
                   <span>
-                    <i class="fas fa-square text-gray"></i> Last year
+                    <i class="fas fa-square text-gray"></i>
+                    <span id="gray_year"></span>
                   </span>
                 </div>
               </div>
