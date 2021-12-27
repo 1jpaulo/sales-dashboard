@@ -4,7 +4,7 @@ class SalesController < ApplicationController
   end
 
   def month_sales_by_day
-    render json: Sale.year(params[:year].to_i).month(params[:month].to_i).daily.count(:trans_total_ex_tax)
+    render json: Sale.year(params[:year].to_i).month(params[:month].to_i).daily.sum(:trans_qty)
   end
 
   def year_sales_profit_by_month
