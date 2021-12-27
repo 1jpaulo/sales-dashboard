@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "sales#index"
+
+  get 'sales/:year', to: 'sales#year_sales_profit_by_month', as: 'year_profit'
+  get 'sales/:year_one/:year_two/:month', to: 'sales#month_sales_profit', as: 'month_profit'
 end
