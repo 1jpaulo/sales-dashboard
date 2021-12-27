@@ -239,11 +239,11 @@ $(function () {
 
     const year_one_sales = await yearSalesMonthly(year_one)
       .catch(function(reason) {
-        throw new Error(reason)
+        throw new Error(`An error ocurred. ${reason}`)
       });
     const year_two_sales = await yearSalesMonthly(year_two)
       .catch(function(reason) {
-        throw new Error(reason)
+        throw new Error(`An error ocurred. ${reason}`)
       });
 
 

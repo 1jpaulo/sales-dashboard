@@ -32,4 +32,22 @@ ActiveRecord::Schema.define(version: 2021_12_23_200427) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sales_temp", id: false, force: :cascade do |t|
+    t.text "APN code"
+    t.text "R.R.P."
+    t.text "Last Buy Price"
+    t.text "Item description"
+    t.text "Author"
+    t.text "Product Category"
+    t.text "Actual Stock On Hand"
+    t.text "Trans Date"
+    t.text "Trans Time"
+    t.text "Trans Document Number"
+    t.text "Trans Reference Number"
+    t.text "Trans Quantity"
+    t.text "Trans Total extax value"
+    t.text "Trans Total tax"
+    t.text "Trans Total discount given"
+  end
+
 end
