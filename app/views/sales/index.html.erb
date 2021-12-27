@@ -179,21 +179,33 @@
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Sales</h3>
-                  <a href="javascript:void(0);" id="sales_trigger">Year 2005-2006</a>
+                  <h3 class="card-title align-self-baseline">Sales<br>Monthly</h3>
+                  <div class="d-flex justify-content-end flex-grow-1 align-self-baseline">
+                    <select id="year1_select" class="mr-2" >
+                      <option value="0" selected>Year</option>
+                    </select>
+                    <select id="year2_select" class="mr-2" >
+                      <option value="0" selected>Year</option>
+                    </select>
+                    <button class="btn btn-warning" id="sales_trigger">Inspect years</button>
+                  </div>
                 </div>
               </div>
               <div class="card-body">
-                <div class="d-flex">
+                <div class="d-flex justify-content-between">
                   <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">$18,230.00</span>
-                    <span>Sales Over Time</span>
+                    <span class="text-bold text-lg" id="sales_over_year1_value">$00,000.00</span>
+                    <span>Sales Over <span id="sales_over_year1"></span></span>
                   </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 33.1%
+                  <p class="ml-4 d-flex flex-column">
+                    <span class="text-bold text-lg" id="sales_over_year2_value">$00,000.00</span>
+                    <span>Sales Over <span id="sales_over_year2"></span></span>
+                  </p>
+                  <p class="d-flex flex-column text-right">
+                    <span class="text-success" id="text_increase_decrease">
+                      <i class="fas fa-arrow-up"></i> <span id="percentage_increase_decrease"></span>
                     </span>
-                    <span class="text-muted">Since last month</span>
+                    <span class="text-muted">Percentage change</span>
                   </p>
                 </div>
                 <!-- /.d-flex -->
@@ -204,14 +216,15 @@
 
                 <div class="d-flex flex-row justify-content-end">
                   <span class="mr-2">
+                    <i class="fas fa-square text-gray"></i>
+                    <span id="gray_year"></span>
+                  </span>
+
+                  <span>
                     <i class="fas fa-square text-primary"></i>
                     <span id="blue_year"></span>
                   </span>
 
-                  <span>
-                    <i class="fas fa-square text-gray"></i>
-                    <span id="gray_year"></span>
-                  </span>
                 </div>
               </div>
             </div>
@@ -365,7 +378,7 @@
 
 <!-- OPTIONAL SCRIPTS -->
 <%= javascript_include_tag "chart.js/Chart.min.js" %>
-
+<!-- Dashboard -->
 <%= javascript_include_tag "pages/dashboard.js" %>
 </body>
 </html>

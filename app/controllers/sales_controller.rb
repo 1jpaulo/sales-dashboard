@@ -28,4 +28,7 @@ class SalesController < ApplicationController
     render json: Sale.year(params[:year].to_i).monthly.sum(:trans_total_ex_tax)
   end
 
+  def all_years
+    render json: Sale.pluck(:trans_date).map { |date| date.year }.uniq
+  end
 end
