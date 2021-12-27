@@ -134,21 +134,39 @@
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Month Sales by Day</h3>
-                  <a href="javascript:void(0);">View Report</a>
+                  <h3 class="card-title align-self-baseline">Sales<br>Daily</h3>
+                  <div class="d-flex justify-content-end flex-grow-1 align-self-baseline">
+                    <select id="year1_daily_select" class="mr-2" >
+                      <option value="0" selected>Year</option>
+                    </select>
+                    <select id="year2_daily_select" class="mr-2" >
+                      <option value="0" selected>Year</option>
+                    </select>
+                    <select id="month_daily_select" class="mr-2" >
+                        <option value="0" selected>Month</option>
+                      <% 1.upto(12).each do |i| %>
+                        <option value="<%= i.to_s.rjust(2, '0') %>" ><%= Date::MONTHNAMES[i] %></option>
+                      <% end %>
+                    </select>
+                    <button class="btn btn-warning" id="sales_trigger_daily">Inspect months</button>
+                  </div>
                 </div>
               </div>
               <div class="card-body">
-                <div class="d-flex">
+                <div class="d-flex justify-content-between">
                   <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">820</span>
-                    <span>Visitors Over Time</span>
+                    <span class="text-bold text-lg" id="sales_number_over_month1">0</span>
+                    <span>Sales Over <span id="sales_over_year1_daily"></span></span>
+                  </p>
+                  <p class="ml-4 d-flex flex-column">
+                    <span class="text-bold text-lg" id="sales_number_over_month2">0</span>
+                    <span>Sales Over <span id="sales_over_year2_daily"></span></span>
                   </p>
                   <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 12.5%
+                    <span class="text-success" id="text_increase_decrease_daily">
+                      <i class="fas fa-arrow-up"></i> <span id="percentage_increase_decrease_daily"></span>
                     </span>
-                    <span class="text-muted">Since last week</span>
+                    <span class="text-muted">Percentage change</span>
                   </p>
                 </div>
                 <!-- /.d-flex -->
@@ -159,12 +177,13 @@
 
                 <div class="d-flex flex-row justify-content-end">
                   <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> This Week
+                    <i class="fas fa-square text-gray"></i> <span id="gray_month"></span>
                   </span>
 
                   <span>
-                    <i class="fas fa-square text-gray"></i> Last Week
+                    <i class="fas fa-square text-primary"></i> <span id="blue_month"></span>
                   </span>
+
                 </div>
               </div>
             </div>
@@ -187,7 +206,7 @@
                     <select id="year2_select" class="mr-2" >
                       <option value="0" selected>Year</option>
                     </select>
-                    <button class="btn btn-warning" id="sales_trigger">Inspect years</button>
+                    <button class="btn btn-warning" id="sales_trigger_monthly">Inspect years</button>
                   </div>
                 </div>
               </div>
@@ -195,11 +214,11 @@
                 <div class="d-flex justify-content-between">
                   <p class="d-flex flex-column">
                     <span class="text-bold text-lg" id="sales_over_year1_value">$00,000.00</span>
-                    <span>Sales Over <span id="sales_over_year1"></span></span>
+                    <span>in Sales Over <span id="sales_over_year1"></span></span>
                   </p>
                   <p class="ml-4 d-flex flex-column">
                     <span class="text-bold text-lg" id="sales_over_year2_value">$00,000.00</span>
-                    <span>Sales Over <span id="sales_over_year2"></span></span>
+                    <span>in Sales Over <span id="sales_over_year2"></span></span>
                   </p>
                   <p class="d-flex flex-column text-right">
                     <span class="text-success" id="text_increase_decrease">
