@@ -34,4 +34,13 @@ As a sugestion I recommend using `nvm` for dealing with node versions.<br><br>
         $ sqlite> .quit
     ```
 1. rake assets:precompile
+1. For tests:
+
+    ```
+      $ bundle exec rspec
+    ```
 1. rails server
+
+## TODO
+Right now the product table isn't working, only the charts.
+
